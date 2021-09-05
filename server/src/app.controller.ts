@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, HttpCode, Res, HttpException, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, HttpCode, Res, Req, HttpException, ValidationPipe } from '@nestjs/common';
 
 import { AppService } from './app.service';
 import { ShortenLinkDto } from './shortenLinkDto';
@@ -9,8 +9,9 @@ export class AppController {
 
   @Post('/shorten-link')
   @HttpCode(201)
-  async shortenLink(@Body(new ValidationPipe()) body: ShortenLinkDto): Promise<string> {
-    return await this.appService.shortenLink(body.fullLink);
+  async shortenLink(@Req() req, @Body(new ValidationPipe()) body: ShortenLinkDto): Promise<string> {
+    const shortId = await this.appService.shortenLink(body.fullLink);
+    return `${req.protocol}://${req.hostname}:${process.env.PORT}/${shortId}`;
   }
 
   @Get('/:shortId')
