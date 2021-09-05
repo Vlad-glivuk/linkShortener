@@ -20,7 +20,7 @@ function App() {
         <div className="main__form">
           <input type="text" className="main__inp" placeholder="url" onInput={handleInput}/>
           <button className="main__btn" onClick={handleClick}>Shorten</button>
-          {state.shortenedLink && <a target="_blank" className="main__res" href={state.shortenedLink}> {state.shortenedLink}</a>}
+          {state.shortenedLink && <a target="_blank" rel="noreferrer" className="main__res" href={state.shortenedLink}> {state.shortenedLink}</a>}
         </div>
       </div>
     </main>
