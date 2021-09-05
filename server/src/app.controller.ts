@@ -13,7 +13,7 @@ export class AppController {
     return await this.appService.shortenLink(body.fullLink);
   }
 
-  @Get('/get-full-link/:shortId')
+  @Get('/:shortId')
   @HttpCode(302)
   async getFullLink(@Res() res, @Param('shortId') shortId: string): Promise<void> {
     const fullLink = await this.appService.getFullLink(shortId);
