@@ -41,3 +41,12 @@
   border: 3px solid #218B59;
   cursor: pointer;
 }
+
+.main__res {
+  position: absolute;
+  left: 600px;
+  top: 500px;
+  color: #218B59;
+  font-size: 18px;
+  margin-top: 25px;
+}
