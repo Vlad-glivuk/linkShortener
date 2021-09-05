@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 
 import { AppService } from './app.service';
 import { ShortenLinkDto } from './shortenLinkDto';
@@ -10,5 +10,10 @@ export class AppController {
   @Post('/shorten-link')
   async shortenLink(@Body() body: ShortenLinkDto): Promise<string> {
     return await this.appService.shortenLink(body.fullLink);
+  }
+
+  @Get('/get-full-link/:shortId')
+  async getFullLink(@Param('shortId') shortId: string): Promise<string> {
+    return await this.appService.getFullLink(shortId);
   }
 }

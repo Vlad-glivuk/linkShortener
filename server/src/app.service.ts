@@ -14,4 +14,9 @@ export class AppService {
 
     return link.shortId;
   }
+
+  async getFullLink(shortId: string): Promise<string> {
+    const link = await this.linkRepository.findOne({ shortId });
+    return link.fullLink;
+  }
 }
