@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { EntityRepository } from '@mikro-orm/core';
 
@@ -17,6 +17,8 @@ export class AppService {
 
   async getFullLink(shortId: string): Promise<string> {
     const link = await this.linkRepository.findOne({ shortId });
+    if (!link) throw new NotFoundException();
+
     return link.fullLink;
   }
 }
