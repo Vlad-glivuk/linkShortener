@@ -1,7 +1,7 @@
 import { Entity, Property} from '@mikro-orm/core';
+import * as shortid from 'shortid';
 
 import { BaseEntity } from './Base.entity';
-import * as shortid from 'shortid';
 
 @Entity()
 export class Link extends BaseEntity {
