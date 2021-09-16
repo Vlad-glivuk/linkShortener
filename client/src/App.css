@@ -18,9 +18,6 @@
 }
 .main__form {
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .main__theme-toggle {
   position: absolute;
@@ -53,13 +50,39 @@
   border: 3px solid #218B59;
   cursor: pointer;
 }
+.main__top-panel {
+  display: flex;
+  flex-direction: row;
+  align-items:flex-end;
+  justify-content: center;
+  height: 50%;
+}
+.main__bottom-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  height: 50%; 
+}
 
 .main__res {
-  position: absolute;
-  left: 600px;
-  top: 500px;
   text-decoration: underline;
   color: crimson;
   font-size: 18px;
-  margin-top: 25px;
+  margin: 25px 10px 0 0;
+}
+.main__copy-hidden {
+  display: none;
+}
+.main__copy {
+  background-color: transparent;
+  color: #218B59;
+  height: 40px;
+  width: 80px;
+  border-radius: 35px;
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 3px solid #218B59;
+  cursor: pointer;
+  margin-top: 15px;
 }
