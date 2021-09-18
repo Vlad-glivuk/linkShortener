@@ -64,15 +64,11 @@
   justify-content: center;
   height: 50%; 
 }
-
 .main__res {
   text-decoration: underline;
   color: crimson;
   font-size: 18px;
   margin: 25px 10px 0 0;
-}
-.main__copy-hidden {
-  display: none;
 }
 .main__copy {
   background-color: transparent;
@@ -85,4 +81,18 @@
   border: 3px solid #218B59;
   cursor: pointer;
   margin-top: 15px;
+  transition: all 0.5s ease;
+}
+.main__copied {
+  background-color: #218B59;
+  color: white;
+  height: 40px;
+  width: 80px;
+  border-radius: 35px;
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 3px solid #218B59;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.5s ease;
 }

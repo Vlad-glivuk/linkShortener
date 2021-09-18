@@ -6,20 +6,28 @@ import DarkModeToggle from "react-dark-mode-toggle";
 function App() {
   const [state, setState] = useState({ inp: "", shortenedLink: "" })
   const [isDarkMode, setIsDarkMode] = useState(() => false);
+  const [isCopiedLink, setIsCopiedLink] = useState(false);
   
   function handleInput (e) {
     setState({...state, inp: e.target.value})
   }
 
-  function handleClick () {
+  function shortenLink () {
     axios
       .post("http://localhost:3000/shorten-link", {fullLink: state.inp})
       .then(res => setState({...state, shortenedLink: res.data}))
       .catch(e => console.log(e))
+
+    setIsCopiedLink(false)
   }
 
   function changeTheme () {
     setIsDarkMode(() => true)
+  }
+
+  function copyLink () {
+    navigator.clipboard.writeText(state.shortenedLink)
+    setIsCopiedLink(true)
   }
 
   return (
@@ -33,10 +41,14 @@ function App() {
       </div>
       <div className="main__container">
         <div className="main__form">
-          <div className="main__top-panel"><input type="text" className="main__inp" placeholder="url" onInput={handleInput}/>
-          <button className="main__btn" onClick={handleClick}>Shorten</button></div>
-          <div className="main__bottom-panel">{state.shortenedLink && <a target="_blank" rel="noreferrer" className="main__res" href={state.shortenedLink}> {state.shortenedLink}</a>}
-          <button className={state.shortenedLink ? "main__copy" : "main__copy-hidden"} onClick={() => {navigator.clipboard.writeText(state.shortenedLink)}}>Copy</button></div>
+          <div className="main__top-panel">
+            <input type="text" className="main__inp" placeholder="url" onInput={handleInput}/>
+            <button className="main__btn" onClick={shortenLink}>Shorten</button>
+          </div>
+          <div className="main__bottom-panel">
+            {state.shortenedLink && <a target="_blank" rel="noreferrer" className="main__res" href={state.shortenedLink}> {state.shortenedLink}</a>}
+            {state.shortenedLink && <button className={isCopiedLink ? "main__copied" : "main__copy"} onClick={copyLink}>Copy</button>}
+          </div>
         </div>
       </div>
     </main>
