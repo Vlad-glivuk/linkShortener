@@ -14,7 +14,6 @@
   max-width: 80%;
   height: 100vh;
   margin: 0 auto;
- 
 }
 .main__form {
   height: 100vh;
@@ -24,7 +23,6 @@
   top: 5px;
   left: 5px;
 }
-
 .main__inp {
   margin: 0 15px 0 0;
   background-color: transparent;
@@ -38,7 +36,6 @@
   border: 3px solid #218B59;
   padding-left: 20px;
 }
-
 .main__btn {
   background-color: transparent;
   color: #218B59;
@@ -49,6 +46,10 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border: 3px solid #218B59;
   cursor: pointer;
+}
+.main__btn:hover, 
+.main__copy:hover {
+  background-color: whitesmoke;
 }
 .main__top-panel {
   display: flex;
@@ -74,7 +75,7 @@
   background-color: transparent;
   color: #218B59;
   height: 40px;
-  width: 80px;
+  width: 90px;
   border-radius: 35px;
   font-size: 18px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -87,12 +88,35 @@
   background-color: #218B59;
   color: white;
   height: 40px;
-  width: 80px;
+  width: 90px;
   border-radius: 35px;
   font-size: 18px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border: 3px solid #218B59;
-  cursor: pointer;
+  cursor: default;
   margin-top: 15px;
   transition: all 0.5s ease;
+}
+
+@media (max-width: 650px) {
+  .main__container {
+    max-width: 95%;
+  }
+}
+@media (max-width: 550px) {
+  .main__container {
+    max-width: none;
+  }
+  .main__top-panel {
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-end;
+  }
+  .main__inp {
+    margin: 0 0 5px 0;
+    width: 90%;
+  }
+  .main__btn {
+    width: 90%;
+  }
 }

@@ -26,8 +26,10 @@ function App() {
   }
 
   function copyLink () {
-    navigator.clipboard.writeText(state.shortenedLink)
-    setIsCopiedLink(true)
+    if (!isCopiedLink) {
+      navigator.clipboard.writeText(state.shortenedLink)
+      setIsCopiedLink(true)
+    }
   }
 
   return (
@@ -47,7 +49,7 @@ function App() {
           </div>
           <div className="main__bottom-panel">
             {state.shortenedLink && <a target="_blank" rel="noreferrer" className="main__res" href={state.shortenedLink}> {state.shortenedLink}</a>}
-            {state.shortenedLink && <button className={isCopiedLink ? "main__copied" : "main__copy"} onClick={copyLink}>Copy</button>}
+            {state.shortenedLink && <button className={isCopiedLink ? "main__copied" : "main__copy"} onClick={copyLink}>{isCopiedLink ? "Copied" : "Copy"}</button>}
           </div>
         </div>
       </div>
